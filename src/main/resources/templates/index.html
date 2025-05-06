@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Car Rental | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+        .hero {
+            background: linear-gradient(to right, #007bff, #00bfff);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 15px;
+        }
+        .btn-custom {
+            font-size: 1.2rem;
+            padding: 12px 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div th:if="${param.carAdded}" class="alert alert-success text-center" role="alert">
+        ✅ Car has been added successfully!
+    </div>
+    <div th:if="${param.customerAdded}" class="alert alert-success text-center" role="alert">
+        ✅ Customer has been added successfully!
+    </div>
+    <div th:if="${param.reservationAdded}" class="alert alert-success text-center mt-3">
+        ✅ Reservation created successfully!
+    </div>
+
+    <div class="hero text-center shadow">
+        <h1 class="display-4 fw-bold">🚗 Welcome to CarRental</h1>
+        <p class="lead mt-3">Manage your fleet, customers, and reservations with ease.</p>
+        <a href="/cars/new" class="btn btn-light btn-custom mt-4">➕ Add New Car</a>
+        <a href="/customers/new" class="btn btn-light btn-custom mt-4">👤 Add New Customer</a>
+        <a href="/reservations/new" class="btn btn-light btn-custom mt-4">📅 New Reservation</a>
+        <a href="/reservations/customer/search" class="btn btn-light btn-custom mt-4">👁️ View Customer Reservations</a>
+    </div>
+
+    <div class="text-center mt-5 text-muted">
+        <p>&copy; 2025 CarRental Inc. | All rights reserved</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
