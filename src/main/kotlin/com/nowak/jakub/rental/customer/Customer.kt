@@ -23,6 +23,6 @@ data class Customer(
     @Column(nullable = false, unique = true)
     val email: String,
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 9)
     val phoneNumber: String
 )
