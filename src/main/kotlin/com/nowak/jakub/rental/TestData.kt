@@ -8,10 +8,10 @@ import org.springframework.boot.CommandLineRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
-@Configuration
+@Configuration //mówi Springowi, że ta klasa zawiera definicje beanów (komponentów).
 class TestData {
 
-    @Bean
+    @Bean //Spring zarejestruje to jako komponent.
     fun loadTestCustomers(customerRepository: CustomerRepository) = CommandLineRunner {
         if (customerRepository.count() == 0L) {
             val customers = listOf(

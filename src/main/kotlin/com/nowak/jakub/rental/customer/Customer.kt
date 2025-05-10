@@ -1,6 +1,7 @@
 package com.nowak.jakub.rental.customer
 
 import jakarta.persistence.*
+import jakarta.validation.constraints.Size
 import java.util.*
 
 @Entity
@@ -26,3 +27,5 @@ data class Customer(
     @Column(nullable = false, length = 9)
     val phoneNumber: String
 )
+ {
+}
