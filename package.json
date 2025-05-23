@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
+    "axios": "^1.9.0",
+    "bootstrap": "^5.3.6",
+    "react": "^19.1.0",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.56.4",
+    "react-router-dom": "^7.6.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/react-bootstrap": "^1.0.1",
+    "@types/react-router-dom": "^5.3.3"
+  }
+}
