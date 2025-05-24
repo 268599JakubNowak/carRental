@@ -1,7 +1,6 @@
 package com.nowak.jakub.rental.customer
 
 import jakarta.persistence.*
-import jakarta.validation.constraints.Size
 import java.util.*
 
 @Entity
