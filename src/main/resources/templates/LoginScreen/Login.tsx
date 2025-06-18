@@ -4,14 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Define the LoginData interface
 interface LoginData {
-    email: string;
+    username: string;
     password: string;
 }
 
 const Login: React.FC = () => {
     // State for form data
     const [loginData, setLoginData] = useState<LoginData>({
-        email: '',
+        username: '',
         password: '',
     });
 
@@ -31,7 +31,7 @@ const Login: React.FC = () => {
     // Handle form submission
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        if (!loginData.email || !loginData.password) {
+        if (!loginData.username || !loginData.password) {
             setError('Proszę wypełnić wszystkie pola!');
             return;
         }
@@ -66,14 +66,14 @@ const Login: React.FC = () => {
                         <p className="lead mt-3">Dostęp do panelu CarRental</p>
                         {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
                         <Form onSubmit={handleSubmit} className="mt-4">
-                            <Form.Group className="mb-3" controlId="email">
-                                <Form.Label className="text-white">Email</Form.Label>
+                            <Form.Group className="mb-3" controlId="Username">
+                                <Form.Label className="text-white">Username</Form.Label>
                                 <Form.Control
-                                    type="email"
-                                    name="email"
-                                    value={loginData.email}
+                                    type="text"
+                                    name="username"
+                                    value={loginData.username}
                                     onChange={handleChange}
-                                    placeholder="jan.kowalski@example.com"
+                                    placeholder="Nazwa uzytkownika"
                                     required
                                 />
                             </Form.Group>
