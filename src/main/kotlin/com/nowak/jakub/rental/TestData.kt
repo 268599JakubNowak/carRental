@@ -20,14 +20,14 @@ class TestData {
                     lastName = "Nowak",
                     pesel = "92030512345",
                     email = "anna.nowak@example.com",
-                    phoneNumber = "123-456-789"
+                    phoneNumber = "123456789"
                 ),
                 Customer(
                     firstName = "Marek",
                     lastName = "Kowalski",
                     pesel = "85061754321",
                     email = "marek.kowalski@example.com",
-                    phoneNumber = "987-654-321"
+                    phoneNumber = "987654321"
                 )
             )
 
@@ -79,8 +79,11 @@ class TestData {
                 )
             )
 
-            carRepository.saveAll(cars)
+            val savedCars = carRepository.saveAll(cars)
             println("Inserted ${cars.size} test cars.")
+            savedCars.firstOrNull()?.let {
+                println(">>> Możesz użyć tego ID do testów: ${it.id} <<<")
+            }
         } else {
             println("Car test data already in DB")
         }

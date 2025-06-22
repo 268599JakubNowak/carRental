@@ -11,4 +11,7 @@ interface ReservationRepository : JpaRepository<Reservation, UUID> {
         start: LocalDate,
         end: LocalDate
     ): List<Reservation>
+
+    fun findByCarId(carId: UUID): List<Reservation>
+
 }

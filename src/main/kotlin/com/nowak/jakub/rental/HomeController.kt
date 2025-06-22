@@ -14,6 +14,6 @@ class HomeController {
         @AuthenticationPrincipal user: UserDetails?
     ): String {
         model.addAttribute("username", user?.username ?: "Nieznany")
-        return "index" // zakładamy, że index.html to strona główna
+        return "index"
     }
 }
