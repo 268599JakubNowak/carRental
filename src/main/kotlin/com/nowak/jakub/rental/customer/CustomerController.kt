@@ -4,11 +4,9 @@ import jakarta.validation.Valid
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.ModelAttribute
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.*
 import org.springframework.validation.FieldError
+import java.util.UUID
 
 @Controller
 @RequestMapping("/customers")
@@ -53,6 +51,18 @@ class CustomerController(private val customerRepository: CustomerRepository) {
         )
 
         customerRepository.save(customer)
-        return "redirect:/?customerAdded"
+        return "redirect:/customers?customerAdded"
+    }
+
+    @GetMapping
+    fun listCustomers(model: Model): String {
+        model.addAttribute("customers", customerRepository.findAll())
+        return "customers/list"
+    }
+
+    @PostMapping("/{id}/delete")
+    fun deleteCustomer(@PathVariable id: UUID): String {
+        customerRepository.deleteById(id)
+        return "redirect:/customers?deleted"
     }
 }

@@ -26,5 +26,5 @@ data class Customer(
     @Column(nullable = false)
     val phoneNumber: String
 )
- {
+{
 }
