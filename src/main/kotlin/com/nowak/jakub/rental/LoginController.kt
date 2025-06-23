@@ -7,6 +7,6 @@ class LoginController {
 
     @GetMapping("/login")
     fun login(): String {
-        return "LoginScreen/login" // Thymeleaf zwróci login.html
+        return "LoginScreen/login"
     }
 }

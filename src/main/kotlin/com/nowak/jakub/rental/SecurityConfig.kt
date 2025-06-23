@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.security.crypto.password.NoOpPasswordEncoder
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
@@ -31,20 +31,24 @@ class SecurityConfig {
                     .logoutSuccessUrl("/login?logout")
                     .permitAll()
             }
-            .csrf { it.disable() } // Tylko do testów
+            .csrf { it.disable() } // Tylko do testów, wyłącza ochronę CSRF w aplikacji.
 
         return http.build()
     }
 
     @Bean
-    fun userDetailsService(): UserDetailsService {
+    fun userDetailsService(passwordEncoder: PasswordEncoder): UserDetailsService {
+        val hashedPassword1 = passwordEncoder.encode("123")
+        val hashedPassword2 = passwordEncoder.encode("321")
+        println("Hashed password for KNowak: $hashedPassword1")
+        println("Hashed password for KKrukowicz: $hashedPassword2")
         val user1 = User.withUsername("KNowak")
-            .password("123")
+            .password(hashedPassword1)
             .roles("USER")
             .build()
 
         val user2 = User.withUsername("KKrukowicz")
-            .password("321")
+            .password(hashedPassword2)
             .roles("USER")
             .build()
 
@@ -53,7 +57,6 @@ class SecurityConfig {
 
     @Bean
     fun passwordEncoder(): PasswordEncoder {
-        // Tylko do testów — nie szyfruje haseł
-        return NoOpPasswordEncoder.getInstance()
+        return BCryptPasswordEncoder()
     }
 }
